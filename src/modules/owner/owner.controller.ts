@@ -7,8 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { OwnerDto } from './dto/owner.dto';
 import { OwnerService } from './owner.service';
+
+@ApiTags('owner')
 
 @Controller('owner')
 export class OwnerController {
@@ -26,16 +29,16 @@ export class OwnerController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ownerService.findOne(+id);
+    return this.ownerService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOwnerDto: OwnerDto) {
-    return this.ownerService.update(+id, updateOwnerDto);
+    return this.ownerService.update(id, updateOwnerDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ownerService.remove(+id);
+    return this.ownerService.remove(id);
   }
 }

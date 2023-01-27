@@ -8,24 +8,30 @@ import { Vehicle, VehicleDocument } from './schema/vehicle';
 export class VehicleService {
   constructor(
     @InjectModel(Vehicle.name) private vehicleModel: Model<VehicleDocument>,
-  ) {}
+  ) { }
   async create(createAutomovilDto: VehicleDto) {
     return await this.vehicleModel.create(createAutomovilDto);
   }
 
-  findAll() {
-    return `This action returns all vehicle`;
+  async findAll() {
+    return await this.vehicleModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vehicle`;
+  async findOne(id: string) {
+    return await this.vehicleModel.findById(id);
   }
 
-  update(id: number, updateVehicleDto: VehicleDto) {
-    return `This action updates a #${id} vehicle`;
+  async update(id: string, updateVehicleDto: VehicleDto) {
+    return await this.vehicleModel.findByIdAndUpdate(id, updateVehicleDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vehicle`;
+  async remove(id: string) {
+    return await this.vehicleModel.findByIdAndRemove(id);
+  }
+  
+  //findAny funciona como filtro para algo especifico
+
+  async findAny(findAnyVehicleDto: VehicleDto) {
+    return await this.vehicleModel.find(findAnyVehicleDto);
   }
 }

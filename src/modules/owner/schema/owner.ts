@@ -5,8 +5,6 @@ export type OwnerDocument = HydratedDocument<Owner>;
 
 @Schema()
 export class Owner {
-  @Prop()
-  id: string;
 
   @Prop()
   nameUser: string;

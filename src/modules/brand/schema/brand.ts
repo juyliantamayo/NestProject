@@ -5,8 +5,6 @@ export type BrandDocument = HydratedDocument<Brand>;
 
 @Schema()
 export class Brand {
-  @Prop()
-  id: string;
 
   @Prop()
   name: string;

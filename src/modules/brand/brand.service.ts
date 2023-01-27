@@ -14,19 +14,19 @@ export class BrandService {
     return await this.BrandModel.create(createBrandDto);
   }
 
-  findAll() {
-    return `This action returns all brand`;
+  async findAll() {
+    return await this.BrandModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} brand`;
+  async findOne(id: string) {
+    return await this.BrandModel.findById(id);
   }
 
-  update(id: number, updateBrandDto: BrandDto) {
-    return `This action updates a #${id} brand`;
+  async update(id: string, updateBrandDto: BrandDto) {
+    return await this.BrandModel.findByIdAndUpdate(id, updateBrandDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} brand`;
+  async remove(id: string) {
+    return await this.BrandModel.findByIdAndDelete(id);
   }
 }

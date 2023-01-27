@@ -7,8 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { VehicleDto } from './dto/vehicle.dto';
 import { VehicleService } from './vehicle.service';
+
+@ApiTags('vehicle')
 
 @Controller('vehicle')
 export class VehicleController {
@@ -26,16 +29,16 @@ export class VehicleController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.vehicleService.findOne(+id);
+    return this.vehicleService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateVehicleDto: VehicleDto) {
-    return this.vehicleService.update(+id, updateVehicleDto);
+    return this.vehicleService.update(id, updateVehicleDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.vehicleService.remove(+id);
+    return this.vehicleService.remove(id);
   }
 }

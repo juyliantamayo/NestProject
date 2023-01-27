@@ -7,8 +7,11 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { BrandService } from './brand.service';
 import { BrandDto } from './dto/brand.dto';
+
+@ApiTags('brand')
 
 @Controller('brand')
 export class BrandController {
@@ -26,16 +29,16 @@ export class BrandController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.brandService.findOne(+id);
+    return this.brandService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBrandDto: BrandDto) {
-    return this.brandService.update(+id, updateBrandDto);
+    return this.brandService.update(id, updateBrandDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.brandService.remove(+id);
+    return this.brandService.remove(id);
   }
 }

@@ -13,20 +13,19 @@ export class OwnerService {
     return await this.BrandModel.create(createOwnerDto);
   }
 
-  findAll() {
-    return `This action returns all owner`;
+  async findAll() {
+    return await this.BrandModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} owner`;
+  async findOne(id: string) {
+    return await this.BrandModel.findById(id);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  update(id: number, updateOwnerDto: OwnerDto) {
-    return `This action updates a #${id} owner`;
+  async update(id: string, updateOwnerDto: OwnerDto) {
+    return await this.BrandModel.findByIdAndUpdate(id, updateOwnerDto)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} owner`;
+  async remove(id: string) {
+    return await this.BrandModel.findByIdAndRemove(id);
   }
 }

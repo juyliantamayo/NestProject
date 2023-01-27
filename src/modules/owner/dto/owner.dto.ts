@@ -1,8 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class OwnerDto {
-  @ApiProperty()
-  id: string;
 
   @ApiProperty()
   nameUser: string;
